@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "api/vocode.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "main.py"
+    },
+    {
+      "src": "/vocode",
+      "methods": ["POST"],
+      "dest": "api/vocode.py"
+    }
+  ],
+  "env": {
+    "VOCODE_API_KEY": "@vocode_api_key",
+    "TWILIO_ACCOUNT_SID": "@twilio_account_sid",
+    "TWILIO_AUTH_TOKEN": "@twilio_auth_token"
+  }
+}
